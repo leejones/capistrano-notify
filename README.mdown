@@ -16,8 +16,6 @@ Require capitrano-growl in your deploy.rb:
 
     require 'capistrano/growl'
     
-That's it!  By default, you'll get a growl after each deploy.  If the deploy fails you'll get a growl notification of that as well.
-
 ## Default notifications ##
 
 after :deploy - "#{application} was successfully deployed to #{deploy_stage}"
@@ -42,3 +40,10 @@ on :rollback - "There was a problem with your deploy to #{application} #{deploy_
     
     set :growl_enabled, false
     
+## Can't get enough? Easily add capistrano-growl to all projects ##
+
+You can add capistrano-growl to all your projects by adding the following to you ~/.caprc
+
+    on :load do
+      require '/Users/leejones/Development/leejones/capistrano-growl/lib/capistrano-growl'
+    end
