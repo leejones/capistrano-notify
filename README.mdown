@@ -11,6 +11,10 @@ Install growl and growlnotify.
 Install capistrano-growl:
 
     gem install capistrano-growl
+
+Require capitrano-growl in your deploy.rb:
+
+    require 'capistrano/growl'
     
 That's it!  By default, you'll get a growl after each deploy.  If the deploy fails you'll get a growl notification of that as well.
 
