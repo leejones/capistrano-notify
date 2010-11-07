@@ -1,20 +1,31 @@
 Capistrano::Configuration.instance.load do
-  after :deploy, "growl:success"
-  after :rollback, "growl:failure"
+  after :deploy, "growl:deploy:success"
+  after :rollback, "growl:deploy:failure"
+  after "deploy:setup", "growl:deploy:setup:success"
+
   before "moonshine:apply", "growl:moonshine:apply"
   
   set :growl_stickyness, true
   set :growl_title, "Capistrano"
   
   namespace :growl do
-    task :success do
-      set :growl_message, "The deploy to #{fetch(:application)} finished."
-      growlnotify
-    end
+    namespace :deploy do
+      task :success do
+        set :growl_message, "The deploy to #{fetch(:application)} finished."
+        growlnotify
+      end
 
-    task :failure do
-      set :growl_message, "The deploy to #{fetch(:application)} failed."
-      growlnotify
+      task :failure do
+        set :growl_message, "The deploy to #{fetch(:application)} failed."
+        growlnotify
+      end
+      
+      namespace :setup do
+        task :success do
+          set :growl_message, "The deploy:setup for #{fetch(:application)} finished."
+          growlnotify
+        end        
+      end
     end
   
     namespace :moonshine do
