@@ -1,6 +1,6 @@
-# CapistranoGrowl #
+# CapistranoNotify #
 
-CapistranoGrowl notifies you via growl when your deployment is finished.
+CapistranoNotify notifies you via system notifications when your deployment is finished.
 
 [example picture]
 
@@ -8,13 +8,13 @@ CapistranoGrowl notifies you via growl when your deployment is finished.
 
 Install growl and growlnotify.
 
-Install capistrano-growl:
+Install capistrano-notify:
 
-    gem install capistrano-growl
+    gem install capistrano-notify
 
-Require capitrano-growl in your deploy.rb:
+Require capitrano-notify in your deploy.rb:
 
-    require 'capistrano/growl'
+    require 'capistrano/notify'
     
 ## Default notifications ##
 
@@ -26,38 +26,38 @@ before "moonshine:apply" - "Moonshine is applying the #{fetch(:moonshine_manifes
 
 ## Options ##
 
-:growl_deploy_message - sets the message for when a deployment is complete.
+:notify_deploy_message - sets the message for when a deployment is complete.
 
-    set :growl_deploy_message, "Your deploy is now diamonds."
+    set :notify_deploy_message, "Your deploy is now diamonds."
 
-:growl_rollback_message - sets the message for when a deploy fails and roll back (default: app name deploy failed1111)
+:notify_rollback_message - sets the message for when a deploy fails and roll back (default: app name deploy failed1111)
 
-    set :growl_rollback_message, "Doh, you just drove a golf cart into the lake."
+    set :notify_rollback_message, "Doh, you just drove a golf cart into the lake."
     
-:growl_stickiness - sets wether the growl should be sticky (default false)
+:notify_stickiness - sets wether the system notification should be sticky (default false)
 
-    set :growl_stickiness, true
+    set :notify_stickiness, true
 
-:growl_enabled - sets wether capistrano-growl is enabled/disable for a project (default: true)
+:notify_enabled - sets wether capistrano-notify is enabled/disable for a project (default: true)
     
-    set :growl_enabled, false
+    set :notify_enabled, false
     
 Example of overriding a default message:
 
-    namespace :growl
+    namespace :notify
       namespace :deploy
         task :success
-          set :growl_stickyness, true
-          set :growl_message, "Your deploy is now diamonds."
-          growlnotify      
+          set :notify_stickyness, true
+          set :notify_message, "Your deploy is now diamonds."
+          notifynotify      
         end
       end
     end
       
-## Can't get enough? Easily add capistrano-growl to all projects ##
+## Can't get enough? Easily add capistrano-notify to all projects ##
 
-You can add capistrano-growl to all your projects by adding the following to you ~/.caprc
+You can add capistrano-notify to all your projects by adding the following to you ~/.caprc
 
     on :load do
-      require 'capistrano-growl'
+      require 'capistrano-notify'
     end
