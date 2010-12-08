@@ -21,6 +21,8 @@ Require capitrano-growl in your deploy.rb:
 after :deploy - "#{application} was successfully deployed to #{deploy_stage}"
 after "deploy:setup" - "#{application} was successfully prepared for deployment on #{deploy_stage}"
 on :rollback - "There was a problem with your deploy to #{application} #{deploy_stage}"
+# you are using moonshine aren't you? :)
+before "moonshine:apply" - "Moonshine is applying the #{fetch(:moonshine_manifest)} for #{fetch(:application)}."
 
 ## Options ##
 
@@ -40,10 +42,22 @@ on :rollback - "There was a problem with your deploy to #{application} #{deploy_
     
     set :growl_enabled, false
     
+Example of overriding a default message:
+
+    namespace :growl
+      namespace :deploy
+        task :success
+          set :growl_stickyness, true
+          set :growl_message, "Your deploy is now diamonds."
+          growlnotify      
+        end
+      end
+    end
+      
 ## Can't get enough? Easily add capistrano-growl to all projects ##
 
 You can add capistrano-growl to all your projects by adding the following to you ~/.caprc
 
     on :load do
-      require '/Users/leejones/Development/leejones/capistrano-growl/lib/capistrano-growl'
+      require 'capistrano-growl'
     end
