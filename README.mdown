@@ -1,12 +1,12 @@
 # CapistranoNotify #
 
-CapistranoNotify notifies you via system notifications when your deployment is finished.
+CapistranoNotify notifies you via system notifications when your deployment is finished.  But wait, there's more!
 
-[example picture]
+![Your deploy is now diamonds](screenshot.jpg)
 
 ## Usage ##
 
-Install growl and growlnotify.
+Install [growl](http://growl.info/) and [growlnotify](http://growl.info/extras.php).
 
 Install capistrano-notify:
 
