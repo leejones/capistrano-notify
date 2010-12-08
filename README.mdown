@@ -18,11 +18,11 @@ Require capitrano-notify in your deploy.rb:
     
 ## Default notifications ##
 
-after :deploy - "#{application} was successfully deployed to #{deploy_stage}"
-after "deploy:setup" - "#{application} was successfully prepared for deployment on #{deploy_stage}"
-on :rollback - "There was a problem with your deploy to #{application} #{deploy_stage}"
-# you are using moonshine aren't you? :)
-before "moonshine:apply" - "Moonshine is applying the #{fetch(:moonshine_manifest)} for #{fetch(:application)}."
+    after :deploy - "#{application} was successfully deployed to #{deploy_stage}"
+    after "deploy:setup" - "#{application} was successfully prepared for deployment on #{deploy_stage}"
+    on :rollback - "There was a problem with your deploy to #{application} #{deploy_stage}"
+    # you are using moonshine aren't you? :)
+    before "moonshine:apply" - "Moonshine is applying the #{fetch(:moonshine_manifest)} for #{fetch(:application)}."
 
 ## Options ##
 
