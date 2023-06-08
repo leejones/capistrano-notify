@@ -2,7 +2,7 @@
 
 CapistranoNotify notifies you via system notifications when your deployment is finished.  But wait, there's more!
 
-![Your deploy is now diamonds](https://github.com/leejones/capistrano-notify/raw/master/screenshot.jpg)
+![Your deploy is now diamonds](https://github.com/leejones/capistrano-notify/raw/main/screenshot.jpg)
 
 ## Usage ##
 
